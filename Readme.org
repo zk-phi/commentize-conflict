@@ -1,0 +1,23 @@
+* commentize-conflict.el
+
+minor mode to treat git conflict markers and their changes as comments
+
+コンフリクトでシンタックスハイライトなどが壊れないようにするマイナーモー
+ド
+
+** Description
+
+This package provides a minor-mode which advices major modes to treat
+git conflict markers and "their" changes as comments, so that they
+will not break major-mode's syntax-highlighting.
+
+** Installation
+
+Put this scrpit into a 'load-path'ed directory, and load it in your
+init file.
+
+: (require 'commentize-conflict)
+
+and add hook to the modes you want to enable the feature.
+
+: (add-hook 'prog-mode-hook 'commentize-conflict-mode)
