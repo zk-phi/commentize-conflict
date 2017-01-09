@@ -1,4 +1,4 @@
-;;; commentize-conflict.el --- Minor mode to treat git conflict markers and their changes as comments
+;;; commentize-conflict.el --- Fix syntax analysis broken by conflict markers
 
 ;; Copyright (C) 2017- zk_phi
 
@@ -47,10 +47,10 @@
 ;;; Code:
 
 (defvar commentize-conflict--orig-propertize-fn nil
-  "Internal variable to store major-mode's `syntax-propertize-function'.")
+  "Major-mode's original `syntax-propertize-function'.")
 
 (defun commentize-conflict--propertize-fn (b e)
-  "Put `syntax-table' properties to conflictions in between B and E."
+  "Put syntax properties to conflictions in between B and E."
   (goto-char b)
   (let (tmp lst)
     ;; jump backward to conflict markers
@@ -74,10 +74,10 @@
 
 ;;;###autoload
 (define-minor-mode commentize-conflict-mode
-  "Minor mode to treat git conflict markers and their changes as comments."
+  "Minor mode to fix syntax analysis broken by conflict markers."
   :init-value nil
   :global nil
-  :lighter " ComConf"
+  :lighter " CmCn"
   (cond (commentize-conflict-mode
          (setq-local commentize-conflict--orig-propertize-fn syntax-propertize-function)
          (setq-local syntax-propertize-function 'commentize-conflict--propertize-fn)
