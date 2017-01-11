@@ -51,6 +51,7 @@
 
 (defun commentize-conflict--propertize-fn (b e)
   "Put syntax properties to conflictions in between B and E."
+  (remove-text-properties b e '(syntax-table))
   (goto-char b)
   (let (tmp lst)
     ;; jump backward to conflict markers
@@ -67,7 +68,6 @@
     (dolist (pair (nreverse lst))
       (when commentize-conflict--orig-propertize-fn
         (funcall commentize-conflict--orig-propertize-fn b (1- (car pair))))
-      (remove-text-properties (car pair) (1+ (cdr pair)) '(syntax-table))
       (put-text-property (car pair) (1+ (car pair)) 'syntax-table '(14))
       (put-text-property (cdr pair) (1+ (cdr pair)) 'syntax-table '(14))
       (setq b (1+ (cdr pair))))
