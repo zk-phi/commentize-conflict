@@ -70,7 +70,9 @@
       (remove-text-properties (car pair) (1+ (cdr pair)) '(syntax-table))
       (put-text-property (car pair) (1+ (car pair)) 'syntax-table '(14))
       (put-text-property (cdr pair) (1+ (cdr pair)) 'syntax-table '(14))
-      (setq b (1+ (cdr pair))))))
+      (setq b (1+ (cdr pair))))
+    (when (and (< b e) commentize-conflict--orig-propertize-fn)
+      (funcall commentize-conflict--orig-propertize-fn b e))))
 
 ;;;###autoload
 (define-minor-mode commentize-conflict-mode
