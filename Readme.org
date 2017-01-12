@@ -1,6 +1,6 @@
 * commentize-conflict.el
 
-minor mode to treat git conflict markers and their changes as comments
+Prevent conflict markers from breaking syntactic analysis
 
 コンフリクトでシンタックスハイライトなどが壊れないようにするマイナーモー
 ド
@@ -10,6 +10,21 @@ minor mode to treat git conflict markers and their changes as comments
 This package provides a minor-mode which advices major modes to treat
 git conflict markers and "their" changes as comments, so that they
 will not break major-mode's syntax-highlighting.
+
+** Screenshots
+
+- without =commentize-conflict=
+
+  [[./img/without.png]]
+
+  =show-paren-mode= is broken by the conflict marker.
+
+- with =commentize-conflict=
+
+  [[./img/with.png]]
+
+  lines between ~=~ and ~<<<<<<< feature-branch~ are treated as
+  comments and =show-paren-mode= is NOT broken.
 
 ** Installation
 

@@ -1,4 +1,4 @@
-;;; commentize-conflict.el --- Fix syntax analysis broken by conflict markers
+;;; commentize-conflict.el --- Prevent conflict markers from breaking syntactic analysis
 
 ;; Copyright (C) 2017- zk_phi
 
@@ -76,7 +76,7 @@
 
 ;;;###autoload
 (define-minor-mode commentize-conflict-mode
-  "Minor mode to fix syntax analysis broken by conflict markers."
+  "Prevent conflict markers from breaking syntactic analysis."
   :init-value nil
   :global nil
   :lighter " CmCn"
