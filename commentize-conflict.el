@@ -83,7 +83,6 @@
   (cond (commentize-conflict-mode
          (setq-local commentize-conflict--orig-propertize-fn syntax-propertize-function)
          (setq-local syntax-propertize-function 'commentize-conflict--propertize-fn)
-         (font-lock-refresh-defaults)
          (with-silent-modifications
            (save-excursion
              (commentize-conflict--propertize-fn (point-min) (point-max)))))
