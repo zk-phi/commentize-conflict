@@ -60,7 +60,7 @@
     ;; search all conflictoins between B and E
     (while (and (< (point) e) (search-forward-regexp "^<<<<<<< [^\s\t].+$" e t))
       (push (cons (match-beginning 0) (point-at-eol)) lst)
-      (when (search-forward-regexp "^=======$" nil t)
+      (when (search-forward-regexp "^\\(?:=======\\|||||||| [^\s\t].+\\)$" nil t)
         (setq tmp (match-beginning 0))
         (when (search-forward-regexp "^>>>>>>> [^\s\t].+$" nil t)
           (push (cons tmp (match-end 0)) lst))))
