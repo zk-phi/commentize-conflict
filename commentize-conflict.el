@@ -17,9 +17,9 @@
 ;; Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 ;; Author: zk_phi
-;; URL: http://hins11.yu-yake.com/
-;; Version: 0.0.0
-;; Package-Requires: ((emacs "24.3"))
+;; URL: http://zk-phi.github.io/
+;; Version: 0.0.1
+;; Package-Requires: ((emacs "27.1"))
 
 ;;; Commentary:
 
@@ -42,7 +42,8 @@
 
 ;;; Change Log:
 
-;; 0.0.0 text release
+;; 0.0.0 test release
+;; 0.0.1 use new setq-local syntax (requires Emacs 27.1)
 
 ;;; Code:
 
@@ -81,8 +82,8 @@
   :global nil
   :lighter " CmCn"
   (cond (commentize-conflict-mode
-         (setq-local commentize-conflict--orig-propertize-fn syntax-propertize-function)
-         (setq-local syntax-propertize-function 'commentize-conflict--propertize-fn)
+         (setq-local commentize-conflict--orig-propertize-fn syntax-propertize-function
+                     syntax-propertize-function              'commentize-conflict--propertize-fn)
          (with-silent-modifications
            (save-excursion
              (commentize-conflict--propertize-fn (point-min) (point-max)))))
