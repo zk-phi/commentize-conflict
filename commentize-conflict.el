@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t -*-
 ;;; commentize-conflict.el --- Prevent conflict markers from breaking syntactic analysis
 
 ;; Copyright (C) 2017- zk_phi
